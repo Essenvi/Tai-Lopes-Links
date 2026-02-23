@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tai Lopes - Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(90deg, #3a3a3a 0%, #5a5a5a 50%, #3a3a3a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* HEADER */
+        .header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(rgba(58,58,58,0.7), rgba(58,58,58,0.5)), 
+                        url('https://i.imgur.com/pSLJwFF.jpeg');
+            background-size: cover;
+            background-position: center 10%;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FF6B8B, #FFA500);
+        }
+        
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        .header-description {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            margin-top: 5px;
+        }
+        
+        /* LOGOS NO TOPO - 6 COLUNAS */
+        .top-logos {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        
+        .logo-item {
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .logo-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 15px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo-icon img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+        
+        .logo-item:hover .logo-icon {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            transform: scale(1.1);
+        }
+        
+        .logo-name {
+            font-size: 1em;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* CORES DAS LOGOS */
+        .privacy { 
+            background: #ffffff;
+        }
+        .onlyfans { 
+            background: #ffffff;
+        }
+        .telegram-vip { 
+            background: #2AABEE;
+        }
+        .telegram-free { 
+            background: #28a745;
+        }
+        .whatsapp { 
+            background: #25D366;
+        }
+        .instagram { 
+            background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+        }
+        
+        /* GALERIA DE FOTOS - GRID 3-3 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px 50px;
+        }
+        
+        .photo-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: rgba(255,255,255,0.08);
+        }
+        
+        .photo-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+        
+        .photo-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-card:hover .photo-container img {
+            transform: scale(1.05);
+        }
+        
+        /* LOGO NO CANTO DA FOTO - CORRIGIDO */
+        .photo-logo {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.6);
+            z-index: 2;
+        }
+        
+        .photo-logo img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+        
+        .photo-logo i {
+            font-size: 1.3em;
+            color: white;
+        }
+        
+        /* CORES DAS LOGOS NOS CARDS */
+        .photo-logo.privacy { background: #ffffff; }
+        .photo-logo.onlyfans { background: #ffffff; }
+        .photo-logo.telegram-vip { background: #2AABEE; }
+        .photo-logo.telegram-free { background: #28a745; }
+        .photo-logo.whatsapp { background: #25D366; }
+        .photo-logo.instagram { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4); }
+        
+        /* NOME DENTRO DA FOTO */
+        .platform-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 18px;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            font-size: 1.1em;
+            background: rgba(60, 60, 60, 0.7);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin: 0;
+            z-index: 2;
+        }
+        
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .header {
+                height: 150px;
+                padding: 0 20px;
+            }
+            
+            .profile-pic {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .header-description {
+                font-size: 0.9em;
+            }
+            
+            .top-logos {
+                gap: 25px;
+            }
+            
+            .logo-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6em;
+            }
+            
+            .logo-icon img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .logo-name {
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 20px 30px;
+            }
+            
+            .photo-container {
+                height: 280px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="profile-container">
+            <img src="https://i.imgur.com/Hxaivan.jpeg" alt="Tai Lopes" class="profile-pic">
+            <div class="profile-info">
+                <div class="name">Tai Lopes</div>
+                <div class="header-description">Conteúdo adulto, personalizado e conexão ao vivo.</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- LOGOS NO TOPO - 6 PLATAFORMAS -->
+    <div class="top-logos">
+        <!-- PRIVACY -->
+        <div class="logo-item" onclick="window.open('https://privacy.com.br/@AccessOnly2', '_blank')">
+            <div class="logo-icon privacy">
+                <img src="https://i.imgur.com/3eyn7gr.png" alt="Privacy">
+            </div>
+            <div class="logo-name">Privacy</div>
+        </div>
+        
+        <!-- ONLYFANS -->
+        <div class="logo-item" onclick="window.open('https://onlyfans.com/taii_lopes', '_blank')">
+            <div class="logo-icon onlyfans">
+                <img src="https://i.imgur.com/yEygxza.jpeg" alt="OnlyFans">
+            </div>
+            <div class="logo-name">OnlyFans</div>
+        </div>
+        
+        <!-- TELEGRAM VIP -->
+        <div class="logo-item" onclick="window.open('https://t.me/AccessOnlyVIP_bot', '_blank')">
+            <div class="logo-icon telegram-vip">
+                <i class="fab fa-telegram"></i>
+            </div>
+            <div class="logo-name">TeleVIP</div>
+        </div>
+        
+        <!-- TELEGRAM FREE -->
+        <div class="logo-item" onclick="window.open('https://t.me/+4yb15-2PSrUxOWUx', '_blank')">
+            <div class="logo-icon telegram-vip">
+                <i class="fab fa-telegram"></i>
+            </div>
+            <div class="logo-name">TeleFree</div>
+        </div>
+        
+        <!-- WHATSAPP -->
+        <div class="logo-item" onclick="window.open('https://wa.me/+5511945013155?text=', '_blank')">
+            <div class="logo-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="logo-name">WhatsApp</div>
+        </div>
+        
+        <!-- INSTAGRAM -->
+        <div class="logo-item" onclick="window.open('https://www.instagram.com/tai_free_', '_blank')">
+            <div class="logo-icon instagram">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <div class="logo-name">Instagram</div>
+        </div>
+    </div>
+
+    <!-- GALERIA DE FOTOS - 6 PLATAFORMAS (CORRIGIDA) -->
+    <div class="gallery">
+        <!-- PRIVACY -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://privacy.com.br/@AccessOnly2" target="_blank" class="photo-link">
+                    <img src="https://i.imgur.com/jb7c9p5.jpeg" alt="Tai Lopes Privacy">
+                </a>
+                <div class="photo-logo privacy">
+                    <img src="https://i.imgur.com/3eyn7gr.png" alt="Privacy">
+                </div>
+                <div class="platform-name">Privacy</div>
+            </div>
+        </div>
+        
+        <!-- ONLYFANS -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://onlyfans.com/taii_lopes" target="_blank" class="photo-link">
+                    <img src="https://i.imgur.com/9eS65o0.jpeg" alt="Tai Lopes OnlyFans">
+                </a>
+                <div class="photo-logo onlyfans">
+                    <img src="https://i.imgur.com/yEygxza.jpeg" alt="OnlyFans">
+                </div>
+                <div class="platform-name">OnlyFans</div>
+            </div>
+        </div>
+        
+        <!-- TELEGRAM VIP -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://t.me/AccessOnlyVIP_bot" target="_blank" class="photo-link">
+                    <img src="https://i.imgur.com/qDqRU2p.jpeg" alt="Tai Lopes Telegram VIP">
+                </a>
+                <div class="photo-logo telegram-vip">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <div class="platform-name">TeleVIP</div>
+            </div>
+        </div>
+        
+        <!-- TELEGRAM FREE -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://t.me/+4yb15-2PSrUxOWUx" target="_blank" class="photo-link">
+                    <img src="https://i.imgur.com/3PAqVFb.jpeg" alt="Tai Lopes Telegram Free">
+                </a>
+                <div class="photo-logo telegram-vip">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <div class="platform-name">TeleFree</div>
+            </div>
+        </div>
+        
+        <!-- WHATSAPP -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://wa.me/+5511945013155?text=" target="_blank" class="photo-link">
+                    <img src="https://i.imgur.com/onXrEQZ.jpeg" alt="Tai Lopes WhatsApp">
+                </a>
+                <div class="photo-logo whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="platform-name">WhatsApp</div>
+            </div>
+        </div>
+        
+        <!-- INSTAGRAM -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://www.instagram.com/tai_free_" target="_blank" class="photo-link">
+                    <img src="https://i.imgur.com/Qc1gSZw.jpeg" alt="Tai Lopes Instagram">
+                </a>
+                <div class="photo-logo instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="platform-name">Instagram</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
